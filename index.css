@@ -1,0 +1,199 @@
+/* 设置全局样式 */
+body {
+    font-family: Arial, sans-serif;         /* 全局字体样式 */
+    display: flex;                          /* 使用 flex 布局，方便侧边栏和内容区域并排显示 */
+    height: 100vh;                          /* 页面高度占满视窗高度 */
+    margin: 0;                              /* 移除默认的页面边距 */
+    overflow: hidden;                       /* 防止页面内容溢出滚动 */
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    position: fixed;                        /* 固定侧边栏位置 */
+    left: 0;                                /* 贴齐视窗左边 */
+    top: 0;                                 /* 贴齐视窗顶部 */
+    width: 250px;                           /* 侧边栏的初始宽度 */
+    height: 100vh;                          /* 侧边栏高度占满视窗高度 */
+    overflow-y: auto;                       /* 添加滚动支持，适应内容过多的情况 */
+    background-color: #f4f4f4;            /* 背景颜色为浅灰色 */
+    padding: 15px;                          /* 内边距，用于内容与边界的间距 */
+    font-size: 14px;                        /* 文字大小 */
+    overflow: hidden;                       /* 隐藏所有溢出的内容（这行会覆盖前面的 overflow-y: auto） */
+    transition: width 0.3s ease, padding 0.3s ease; /* 添加过渡效果，提升隐藏和显示的平滑度 */
+}
+
+/* 主内容区域样式 */
+.content {
+    flex-grow: 1;                           /* 主内容区域占据剩余空间 */
+    border: 'none';                         /* 移除元素的边框 */
+    margin: '20px';                         /* 设置元素的外边距为20像素 */
+    padding: 20px;                          /* 内边距 */
+    margin-left: 250px;                     /* 为内容区域留出侧边栏宽度的空间 */
+    overflow-y: auto;                       /* 如果内容过多，启用纵向滚动条 */
+    transition: margin-left 0.3s ease;      /* 添加左边距变化的动画效果 */
+}
+
+/* 側邊欄切換按鈕 */
+#toggleSidebarBtn {
+    position: absolute;                     /* 使用絕對定位，相對於最近的定位父元素（通常是 body 或其他容器） */
+    left: 265px;                            /* 距離左側 265px，略微超出側邊欄邊界（假設側邊欄寬度為 250px，外加 15px padding） */
+    top: 10px;                              /* 距離頂部 10px，讓按鈕靠近頁面上方 */
+    width: 20px;                            /* 按鈕寬度為 20px */
+    height: 20px;                           /* 按鈕高度為 20px */
+    padding: 0;                             /* 移除內邊距，確保按鈕尺寸固定 */
+    background-color: #444;               /* 背景顏色為深灰色 */
+    color: white;                         /* 按鈕文字顏色為白色 */
+    border: none;                           /* 移除邊框，使按鈕外觀更簡潔 */
+    cursor: pointer;                        /* 滑鼠懸停時顯示為可點擊狀態 */
+    font-size: 15px;                        /* 設定按鈕內文字的大小 */
+    transition: left 0.3s ease;             /* 左側位置變化時使用 0.3 秒平滑過渡效果 */
+}
+
+/* 隱藏時的側邊欄樣式 */
+.sidebar.hidden {
+    width: 0;                               /* 將寬度設為 0，使其不可見 */
+    padding: 0;                             /* 移除內邊距，避免內容佔空間 */
+    overflow: hidden;                       /* 隱藏溢出的內容，確保不會顯示任何內部元素 */
+}
+
+/* 隱藏側邊欄時調整內容區域 */
+.sidebar.hidden ~ .content {
+    margin-left: 0;                         /* 移除左邊距，讓內容區域向左貼齊視窗 */
+    width: 100%;                            /* 將內容區域的寬度設為 100%，填滿整個可視區域 */
+}
+
+/* 當側邊欄隱藏時，調整按鈕位置 */
+#sidebar.hidden + #toggleSidebarBtn {
+    left: 10px;                             /* 將切換按鈕移到視窗左邊緣，保持可見性 */                 
+}
+
+/* 侧边栏中的无序列表样式 */
+.sidebar ul {
+    list-style: none;                       /* 移除默认的列表样式 */
+    padding: 0;                             /* 去掉内边距 */
+    margin: 0;                              /* 去掉外边距 */
+}
+
+/* 列表项样式 */
+.sidebar ul li {
+    padding: 8px;                           /* 列表项内边距，增加点击区域 */
+    background-color: #fff;               /* 列表项背景为白色 */
+    margin-bottom: 8px;                     /* 每个列表项之间的间距 */
+    cursor: pointer;                        /* 鼠标悬停时显示为可点击状态 */
+    border-radius: 4px;                     /* 列表项圆角边框 */
+    transition: background-color 0.3s;      /* 添加背景颜色的过渡效果 */
+}
+
+/* 列表项悬停样式 */
+.sidebar ul li:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* 鼠标悬停时背景变为淡蓝色，透明感 */
+    transition: background-color 0.3s;          /* 背景颜色的过渡效果 */
+}
+
+/* 子列表样式（默认隐藏） */
+.sidebar ul ul {
+    max-height: 0;                          /* 默认高度为 0，隐藏子列表 */
+    overflow-y: hidden;                     /* 防止内容溢出 */
+    padding-left: 10px;                     /* 为子列表添加左侧内边距，便于层次区分 */
+    transition: max-height 0.3s ease-out;   /* 添加高度变化的动画效果 */
+}
+
+/* 子列表激活状态（显示子列表） */
+.sidebar ul ul.active {
+    max-height: 620px;                      /* 激活状态下子列表的最大高度，超出时滚动 */
+    overflow-y: auto;                       /* 如果内容超出高度，启用滚动条 */
+}
+
+/* 子列表项样式 */
+.sidebar ul ul li {
+    margin-bottom: 5px;                     /* 子列表项之间的间距 */
+    padding: 6px;                           /* 子列表项内边距 */
+    background-color: #f9f9f9;            /* 子列表项背景颜色为浅灰色 */
+    border-radius: 4px;                     /* 子列表项圆角边框 */
+}
+
+/* 子列表项悬停样式 */
+.sidebar ul ul li:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* 鼠标悬停时背景变为更深的淡蓝色 */
+}
+
+/* 隐藏侧边栏时，调整主内容的左边距 */
+.sidebar.hidden ~ .content {
+    margin-left: 0;                         /* 隐藏侧边栏时，内容区域占满宽度 */
+    width: 100%;                            /* 内容区域宽度调整为 100% */
+}
+
+/* 一级标题：水平居中显示，宽度占满父容器 */
+h1 {
+    text-align: center;                     /* 让标题文本水平居中 */
+    width: 100%;                            /* 让标题占满整个父级容器的宽度 */
+}
+
+/* 输入区域：使用 Flexbox 让输入框和标签对齐 */
+.import, .export {
+    display: flex;                          /* 使用 Flexbox 布局 */
+    flex-direction: column;                 /* 设置子元素按垂直方向排列 */
+    align-items: center;                    /* 让子元素在交叉轴上居中对齐（水平方向） */
+    width: 80%;                             /* 设置容器的宽度为父元素的80% */
+    margin-left: 100px;                     /* 设置容器的左外边距为100像素 */
+}
+
+/* 输入框行布局 */
+.import > div {
+    display: flex;                          /* 启用 Flexbox，使 label 和 input 同一行 */
+    align-items: center;                    /* 让输入框和标签垂直居中对齐 */
+    justify-content: flex-start;            /* 保持 label 和 input 左对齐 */
+    width: 100%;                            /* 设置容器的宽度为父元素的100% */
+    margin-bottom: 10px;                    /* 每个输入行之间的间距 */
+}
+
+/* 按钮区域 */
+.import > div:last-child {
+    display: flex;                          /* 使用 Flexbox 布局 */
+    justify-content: center;                /* 让子元素在主轴（水平方向）上居中对齐 */
+    width: 100%;                            /* 设置容器的宽度为100% */
+    margin-top: 10px;                       /* 设置容器的上外边距为10像素 */
+}
+
+/* 输出框行布局 */
+.export > div {
+    display: flex;                          /* 启用 Flexbox，使 label 和 input 同一行 */
+    align-items: center;                    /* 让输入框和标签垂直居中对齐 */
+    justify-content: flex-start;            /* 保持 label 和 input 左对齐 */
+    width: 100%;                            /* 设置容器的宽度为100% */
+    margin-bottom: 10px;                    /* 每个输入行之间的间距 */
+}
+
+/* 让 label 保持统一宽度 */
+label {
+    display: inline-block;                  /* 让 label 变成块级元素但保持 inline 样式 */
+    width: 20%;                             /* 确保所有 label 统一宽度 */
+    text-align: left;                       /* 让文字靠左对齐，以对齐输入框 */
+    margin-right: 15px;                     /* 设置元素的右外边距为15像素 */
+}
+
+/* 输入框样式 */
+input {
+    flex: 1;                                /* 设置输入框的弹性比例，使其填充父容器中的剩余空间 */
+    width: 80%;                             /* 设置输入框的宽度为父容器宽度的80% */
+    padding: 5px;                           /* 设置输入框的内边距为5像素 */
+}
+
+/* 按钮样式 */
+button {
+    width: 150px;                           /* 设置按钮的宽度为150像素 */
+    background-color: #00c787;            /* 设置按钮的背景颜色为绿色 */
+    border: none;                           /* 移除按钮的边框 */
+    color: white;                         /* 设置按钮的文本颜色为白色 */
+    padding: 10px 15px;                     /* 设置按钮的内边距：上下10像素，左右15像素 */
+    cursor: pointer;                        /* 设置鼠标悬停时显示为手型指针，表示可点击 */
+    margin-left: 5px;                       /* 设置按钮的左外边距为5像素 */
+    margin-right: 5px;                      /* 设置按钮的右外边距为5像素 */
+}
+
+/* 文本框样式 */
+textarea {
+    flex: 1;                                /* 设置文本框的弹性比例，使其填充父容器中的剩余空间 */
+    width: 80%;                             /* 设置文本框的宽度为父容器宽度的80% */
+    padding: 5px;                           /* 设置文本框的内边距为5像素 */
+}

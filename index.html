@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Workbench - Mac</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    
+    <div class="sidebar" id="sidebar">
+        <!-- sidebar是侧边栏控件，ul是无序列表控件 -->
+        <ul>
+            <li>
+                第一级目录 一
+                <ul>
+                    <li onclick="one()">第二级目录 一</li>
+                    <li onclick="two()">第二级目录 二</li>
+                    <li onclick="one()">第二级目录 三</li>
+                </ul>
+            </li>
+            
+            <li>
+                第一级目录 二
+                <ul>
+                    <li onclick="two()">第二级目录 一</li>
+                    <li onclick="one()">第二级目录 二</li>
+                    <li onclick="two()">第二级目录 三</li>
+                </ul>
+            </li>
+
+            <li>
+                第一级目录 三
+                <ul>
+                    <li onclick="one()">第二级目录 一</li>
+                    <li onclick="two()">第二级目录 二</li>
+                    <li onclick="one()">第二级目录 三</li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+
+    <div class="content" id="content"></div>
+    
+    <!-- 側邊欄切換按鈕 -->
+    <button id="toggleSidebarBtn" onclick="toggleSidebar()">×</button>
+
+    <script type="module" src="index.js"></script>
+
+</body>
+</html>
