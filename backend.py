@@ -2,6 +2,13 @@
 
 import sys
 import json
+from file_tools import modifythefilename
+from file_tools import character
+from file_tools import image
+from file_tools import export
+from file_tools import sort
+from file_tools import collect_file
+from file_tools import copy_folder
 
 def main():
     
@@ -11,9 +18,28 @@ def main():
     # 將數據轉換為 Python 對象
     request = json.loads(input_data)
 
-    # 處理數據（這裡我們假設收到的是計算請求）
-    if request["command"] == "calculate":
-        result = eval(request["expression"])
+    # 處理數據
+    if request["command"] == "filename_modify":
+        result = modifythefilename.modify(request)
+    elif request["command"] == "filename_character":
+        result = character.character(request)
+    elif request["command"] == "filename_image":
+        result = image.image(request)
+    elif request["command"] == "filename_export":
+        result = export.export(request)
+    elif request["command"] == "filename_sort":
+        result = sort.sort(request)
+    elif request["command"] == "collect_file":
+        result = collect_file.collect_file(request)
+    elif request["command"] == "copy_folder":
+        result = copy_folder.copy_folder(request)
+
+
+
+
+
+
+
     else:
         result = "Unknown command"
 

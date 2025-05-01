@@ -1,6 +1,12 @@
 // index.js
 
-import { page_1 } from './page.js';
+import { modifythefilenameFunction } from './file_tools/modifythefilename.js'
+import { characterFunction } from './file_tools/character.js'
+import { imageFunction } from './file_tools/image.js'
+import { sortFunction } from './file_tools/sort.js'
+import { exportFunction } from './file_tools/export.js'
+import { collect_fileFunction } from './file_tools/collect_file.js'
+import { copy_folderFunction } from './file_tools/copy_folder.js'
 
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
     item.addEventListener('click', function (e) {
@@ -41,14 +47,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 页面加载后自动显示的页面
 window.addEventListener('DOMContentLoaded', () => {
-    page_1();
+    const contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = `<h1>歡迎使用</h1>`;
 });
-
-window.one = function() {
-    page_1();
-}
 
 window.two = function() {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = `<h1>演示页面（index.js）</h1>`;
+}
+
+
+window.file_tools_modifythefilenameFunction = function() {
+    modifythefilenameFunction();
+}
+
+window.file_tools_characterFunction = function() {
+    characterFunction();
+}
+
+window.file_tools_imageFunction = function() {
+    imageFunction();
+}
+
+window.file_tools_exportFunction = function() {
+    exportFunction();
+}
+
+window.file_tools_sortFunction = function() {
+    sortFunction();
+}
+
+window.file_tools_collect_fileFunction = function() {
+    collect_fileFunction();
+}
+
+window.file_tools_copy_folderFunction = function() {
+    copy_folderFunction();
 }

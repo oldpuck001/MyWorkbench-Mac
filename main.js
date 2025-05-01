@@ -73,7 +73,7 @@ ipcMain.handle('dialog:saveFile', async (event, filters, defaultFileName) => {
 ipcMain.on('asynchronous-message', (event, arg) => {
 
   // 通過 spawn 函數創建的 Python 子進程對象，允許你與該子進程進行交互，例如監聽它的輸出、錯誤信息，或向其發送輸入數據。
-  const pythonProcess = spawn('python', [path.join(__dirname, 'backend.py')]);
+  const pythonProcess = spawn('python3', [path.join(__dirname, 'backend.py')]);
 
   // 發送數據到 Python
   pythonProcess.stdin.write(JSON.stringify(arg));
