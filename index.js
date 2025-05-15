@@ -8,6 +8,11 @@ import { exportFunction } from './file_tools/export.js'
 import { collect_fileFunction } from './file_tools/collect_file.js'
 import { copy_folderFunction } from './file_tools/copy_folder.js'
 
+import { spliceFunction } from './xlsx_tools/splice.js';
+
+import { select_folder } from './audit_tools/select_folder.js';
+
+
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
     item.addEventListener('click', function (e) {
         // 检查是否有子菜单
@@ -48,14 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // 页面加载后自动显示的页面
 window.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = `<h1>歡迎使用</h1>`;
+    contentDiv.innerHTML = `<h1>欢迎使用</h1>`;
 });
-
-window.two = function() {
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = `<h1>演示页面（index.js）</h1>`;
-}
-
 
 window.file_tools_modifythefilenameFunction = function() {
     modifythefilenameFunction();
@@ -83,4 +82,12 @@ window.file_tools_collect_fileFunction = function() {
 
 window.file_tools_copy_folderFunction = function() {
     copy_folderFunction();
+}
+
+window.xlsx_tools_spliceFunction = function() {
+    spliceFunction();
+}
+
+window.select_folder = function() {
+    select_folder();
 }

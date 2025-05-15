@@ -2,6 +2,7 @@
 
 import sys
 import json
+
 from file_tools import modifythefilename
 from file_tools import character
 from file_tools import image
@@ -9,6 +10,13 @@ from file_tools import export
 from file_tools import sort
 from file_tools import collect_file
 from file_tools import copy_folder
+
+from xlsx_tools import splice
+
+from audit_tools import select_folder
+
+
+
 
 def main():
     
@@ -34,9 +42,13 @@ def main():
     elif request["command"] == "copy_folder":
         result = copy_folder.copy_folder(request)
 
+    elif request["command"] == "splice_sheet_input":
+        result = splice.input_sheet(request)
+    elif request["command"] == "splice_sheet_output":
+        result = splice.output_sheet(request)
 
-
-
+    elif request["command"] == "select_folder_path":
+        result = select_folder.select_folder_path(request)
 
 
 
