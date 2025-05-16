@@ -14,8 +14,9 @@ from file_tools import copy_folder
 from xlsx_tools import splice
 
 from audit_tools import select_folder
-
-
+from audit_tools import set_up
+from audit_tools import import_account_balance_sheet
+from audit_tools import import_chronological_account
 
 
 def main():
@@ -42,14 +43,38 @@ def main():
     elif request["command"] == "copy_folder":
         result = copy_folder.copy_folder(request)
 
+
     elif request["command"] == "splice_sheet_input":
         result = splice.input_sheet(request)
     elif request["command"] == "splice_sheet_output":
         result = splice.output_sheet(request)
 
+
     elif request["command"] == "select_folder_path":
         result = select_folder.select_folder_path(request)
 
+    elif request["command"] == "import_config":
+        result = set_up.import_config(request)
+    elif request['command'] == 'select_basic_file':
+        result =set_up.select_basic_file(request)
+    elif request["command"] == "import_basic":
+        result = set_up.import_basic(request)
+    elif request["command"] == "save_settings":
+        result = set_up.save_settings(request)
+
+    elif request["command"] == "import_account_balance_sheet":
+        result = import_account_balance_sheet.import_account_balance_sheet(request)
+    elif request["command"] == "index_account_balance_sheet":
+        result = import_account_balance_sheet.index_account_balance_sheet(request)
+    elif request["command"] == "export_account_balance_sheet":
+        result = import_account_balance_sheet.export_account_balance_sheet(request)
+
+    elif request["command"] == "import_chronological_account":
+        result = import_chronological_account.import_chronological_account(request)
+    elif request["command"] == "index_chronological_account":
+        result = import_chronological_account.index_chronological_account(request)
+    elif request["command"] == "export_chronological_account":
+        result = import_chronological_account.export_chronological_account(request)
 
 
     else:

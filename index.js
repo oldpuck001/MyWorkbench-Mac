@@ -11,6 +11,9 @@ import { copy_folderFunction } from './file_tools/copy_folder.js'
 import { spliceFunction } from './xlsx_tools/splice.js';
 
 import { select_folder } from './audit_tools/select_folder.js';
+import { set_up } from './audit_tools/set_up.js';
+import { import_account_balance_sheet } from './audit_tools/import_account_balance_sheet.js';
+import { import_chronological_account } from './audit_tools/import_chronological_account.js';
 
 
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
@@ -90,4 +93,16 @@ window.xlsx_tools_spliceFunction = function() {
 
 window.select_folder = function() {
     select_folder();
+}
+
+window.set_up = function() {
+    set_up();
+}
+
+window.import_account_balance_sheet = function() {
+    import_account_balance_sheet();
+}
+
+window.import_chronological_account = function() {
+    import_chronological_account();
 }
