@@ -9,6 +9,8 @@ import { collect_fileFunction } from './file_tools/collect_file.js'
 import { copy_folderFunction } from './file_tools/copy_folder.js'
 
 import { spliceFunction } from './xlsx_tools/splice.js';
+import { subtotalsFunction } from './xlsx_tools/subtotals.js';
+import { regexFunction } from './xlsx_tools/regex.js'
 
 import { select_folder } from './audit_tools/select_folder.js';
 import { set_up } from './audit_tools/set_up.js';
@@ -92,6 +94,14 @@ window.file_tools_copy_folderFunction = function() {
 
 window.xlsx_tools_spliceFunction = function() {
     spliceFunction();
+}
+
+window.excel_tools_subtotalsFunction = function() {
+    subtotalsFunction();
+}
+
+window.excel_tools_regexFunction = function() {
+    regexFunction();
 }
 
 window.select_folder = function() {

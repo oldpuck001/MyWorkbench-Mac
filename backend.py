@@ -12,6 +12,8 @@ from file_tools import collect_file
 from file_tools import copy_folder
 
 from xlsx_tools import splice
+from xlsx_tools import subtotals
+from xlsx_tools import regex
 
 from audit_tools import select_folder
 from audit_tools import set_up
@@ -50,7 +52,18 @@ def main():
         result = splice.input_sheet(request)
     elif request["command"] == "splice_sheet_output":
         result = splice.output_sheet(request)
-
+    elif request["command"] == "subtotals_import":
+        result = subtotals.subtotals_import(request)
+    elif request["command"] == "subtotals_index":
+        result = subtotals.subtotals_index(request)
+    elif request["command"] == "subtotals_generate":
+        result = subtotals.subtotals_generate(request)
+    elif request['command'] == "regex_import":
+        result = regex.select_file(request)
+    elif request['command'] == "regex_index":
+        result = regex.road_sheet(request)
+    elif request['command'] == "regex_generate":
+        result = regex.regex_generate(request)
 
     elif request["command"] == "select_folder_path":
         result = select_folder.select_folder_path(request)
