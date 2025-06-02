@@ -21,6 +21,12 @@ import { import_income_statement } from './audit_tools/import_income_statement.j
 import { import_cash_flow_statement } from './audit_tools/import_cash_flow_statement.js';
 
 
+
+import { find_subset } from './other_tools/find_subset.js'
+import { text_comparison } from './other_tools/text_comparison.js'
+import { docx_comparison } from './other_tools/docx_comparison.js'
+import { xlsx_comparison } from './other_tools/xlsx_comparison.js'
+
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
     item.addEventListener('click', function (e) {
         // 检查是否有子菜单
@@ -130,4 +136,20 @@ window.import_income_statement = function() {
 
 window.import_cash_flow_statement = function() {
     import_cash_flow_statement();
+}
+
+window.find_subset = function() {
+    find_subset();
+}
+
+window.text_comparison = function() {
+    text_comparison();
+}
+
+window.docx_comparison = function() {
+    docx_comparison();
+}
+
+window.xlsx_comparison = function() {
+    xlsx_comparison();
 }

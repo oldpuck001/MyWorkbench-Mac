@@ -23,6 +23,13 @@ from audit_tools import import_balance_sheet
 from audit_tools import import_income_statement
 from audit_tools import import_cash_flow_statement
 
+
+
+from other_tools import find_subset
+from other_tools import text_comparison
+from other_tools import docx_comparison
+from other_tools import xlsx_comparison
+
 def main():
     
     # 從標準輸入讀取數據
@@ -111,6 +118,29 @@ def main():
 
 
 
+
+
+
+
+
+
+    elif request["command"] == "find_subset_sheetnames_import":
+        result = find_subset.find_subset_sheetnames_import(request)
+    elif request["command"] == "find_subset_columns_index":
+        result = find_subset.find_subset_columns_index(request)
+    elif request["command"] == "find_subset_import":
+        result = find_subset.find_subset_import(request)
+    elif request["command"] == "find_subset_export":
+        result = find_subset.find_subset_export(request)
+
+    elif request["command"] == "text_comparison":
+        result = text_comparison.text_comparison(request)
+    elif request["command"] == "docx_comparison":
+        result = docx_comparison.compare_word_documents(request)
+    elif request["command"] == "xlsx_comparision_sheetnames":
+        result = xlsx_comparison.xlsx_comparision_sheetnames(request)
+    elif request["command"] == "xlsx_comparison":
+        result = xlsx_comparison.compare_excels(request)
 
     else:
         result = "Unknown command"
