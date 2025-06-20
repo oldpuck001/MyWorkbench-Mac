@@ -20,6 +20,8 @@ import { import_balance_sheet } from './audit_tools/import_balance_sheet.js';
 import { import_income_statement } from './audit_tools/import_income_statement.js';
 import { import_cash_flow_statement } from './audit_tools/import_cash_flow_statement.js';
 
+import { data_cleaning } from './data_analysis_tools/data_cleaning.js'
+import { sqlite } from './data_analysis_tools/sqlite.js'
 
 
 import { find_subset } from './other_tools/find_subset.js'
@@ -136,6 +138,14 @@ window.import_income_statement = function() {
 
 window.import_cash_flow_statement = function() {
     import_cash_flow_statement();
+}
+
+window.data_cleaning = function() {
+    data_cleaning();
+}
+
+window.sqlite = function() {
+    sqlite();
 }
 
 window.find_subset = function() {

@@ -23,7 +23,7 @@ from audit_tools import import_balance_sheet
 from audit_tools import import_income_statement
 from audit_tools import import_cash_flow_statement
 
-
+from data_analysis_tools import sqlite
 
 from other_tools import find_subset
 from other_tools import text_comparison
@@ -121,7 +121,14 @@ def main():
 
 
 
-
+    elif request["command"] == "sql_sqlite_folder":
+        result = sqlite.sql_sqlite_folder(request)
+    elif request["command"] == "sql_sqlite_sql":
+        result = sqlite.sql_sqlite_sql(request)
+    elif request["command"] == "sql_sqlite_backup":
+        result = sqlite.sql_sqlite_backup(request)
+    elif request["command"] == "sql_sqlite_select":
+        result = sqlite.sql_sqlite_select(request)
 
 
     elif request["command"] == "find_subset_sheetnames_import":
