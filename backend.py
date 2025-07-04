@@ -23,6 +23,7 @@ from audit_tools import import_balance_sheet
 from audit_tools import import_income_statement
 from audit_tools import import_cash_flow_statement
 
+from data_analysis_tools import data_cleaning
 from data_analysis_tools import sqlite
 
 from other_tools import find_subset
@@ -119,7 +120,14 @@ def main():
 
 
 
-
+    elif request["command"] == "data_cleaning_select":
+        result = data_cleaning.data_cleaning_select(request)
+    elif request["command"] == "data_cleaning_index":
+        result = data_cleaning.data_cleaning_index(request)
+    elif request['command'] == "data_cleaning_clean":
+        result = data_cleaning.data_cleaning_clean(request)
+    elif request["command"] == "data_cleaning_export":
+        result = data_cleaning.data_cleaning_export(request)
 
     elif request["command"] == "sql_sqlite_folder":
         result = sqlite.sql_sqlite_folder(request)
