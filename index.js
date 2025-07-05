@@ -23,11 +23,11 @@ import { import_cash_flow_statement } from './audit_tools/import_cash_flow_state
 import { data_cleaning } from './data_analysis_tools/data_cleaning.js'
 import { sqlite } from './data_analysis_tools/sqlite.js'
 
-
 import { find_subset } from './other_tools/find_subset.js'
 import { text_comparison } from './other_tools/text_comparison.js'
 import { docx_comparison } from './other_tools/docx_comparison.js'
 import { xlsx_comparison } from './other_tools/xlsx_comparison.js'
+import { bank_statement_sort } from './other_tools/bank_statement_sort.js'
 
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
     item.addEventListener('click', function (e) {
@@ -162,4 +162,8 @@ window.docx_comparison = function() {
 
 window.xlsx_comparison = function() {
     xlsx_comparison();
+}
+
+window.bank_statement_sort = function() {
+    bank_statement_sort();
 }

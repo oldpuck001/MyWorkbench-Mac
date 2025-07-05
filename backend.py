@@ -30,6 +30,7 @@ from other_tools import find_subset
 from other_tools import text_comparison
 from other_tools import docx_comparison
 from other_tools import xlsx_comparison
+from other_tools import bank_statement_sort
 
 def main():
     
@@ -156,6 +157,15 @@ def main():
         result = xlsx_comparison.xlsx_comparision_sheetnames(request)
     elif request["command"] == "xlsx_comparison":
         result = xlsx_comparison.compare_excels(request)
+
+    elif request["command"] == "bank_statement_sort_import":
+        result = bank_statement_sort.bank_statement_sort_import(request)
+    elif request["command"] == "bank_statement_sort_index":
+        result = bank_statement_sort.bank_statement_sort_index(request)
+    elif request["command"] == "bank_statement_sort_debit_or_credit":
+        result = bank_statement_sort.bank_statement_sort_debit_or_credit(request)
+    elif request["command"] == "bank_statement_sort_export":
+        result = bank_statement_sort.bank_statement_sort_export(request)
 
     else:
         result = "Unknown command"
