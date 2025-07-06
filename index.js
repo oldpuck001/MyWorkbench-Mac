@@ -28,6 +28,7 @@ import { text_comparison } from './other_tools/text_comparison.js'
 import { docx_comparison } from './other_tools/docx_comparison.js'
 import { xlsx_comparison } from './other_tools/xlsx_comparison.js'
 import { bank_statement_sort } from './other_tools/bank_statement_sort.js'
+import { generate_chronological_account } from './other_tools/generate_chronogical_account.js'
 
 document.querySelectorAll('.sidebar > ul > li').forEach(item => {
     item.addEventListener('click', function (e) {
@@ -166,4 +167,8 @@ window.xlsx_comparison = function() {
 
 window.bank_statement_sort = function() {
     bank_statement_sort();
+}
+
+window.generate_chronological_account = function() {
+    generate_chronological_account();
 }

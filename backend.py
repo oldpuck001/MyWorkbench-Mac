@@ -31,6 +31,7 @@ from other_tools import text_comparison
 from other_tools import docx_comparison
 from other_tools import xlsx_comparison
 from other_tools import bank_statement_sort
+from other_tools import generate_chronological_account
 
 def main():
     
@@ -41,6 +42,7 @@ def main():
     request = json.loads(input_data)
 
     # 處理數據
+    # 文件操作工具
     if request["command"] == "filename_modify":
         result = modifythefilename.modify(request)
     elif request["command"] == "filename_character":
@@ -57,6 +59,7 @@ def main():
         result = copy_folder.copy_folder(request)
 
 
+    # 电子表格工具
     elif request["command"] == "splice_sheet_input":
         result = splice.input_sheet(request)
     elif request["command"] == "splice_sheet_output":
@@ -74,6 +77,8 @@ def main():
     elif request['command'] == "regex_generate":
         result = regex.regex_generate(request)
 
+
+    # 审计辅助工具
     elif request["command"] == "select_folder_path":
         result = select_folder.select_folder_path(request)
 
@@ -105,12 +110,10 @@ def main():
     elif request["command"] == "import_balance_sheet":
         result = import_balance_sheet.import_balance_sheet(request)
 
-
     elif request["command"] == "select_income_statement":
         result = import_income_statement.select_income_statement(request)
     elif request["command"] == "import_income_statement":
         result = import_income_statement.import_income_statement(request)
-
 
     elif request["command"] == "select_cash_flow_statement":
         result = import_cash_flow_statement.select_cash_flow_statement(request)
@@ -121,6 +124,11 @@ def main():
 
 
 
+
+
+
+
+    # 数据分析工具
     elif request["command"] == "data_cleaning_select":
         result = data_cleaning.data_cleaning_select(request)
     elif request["command"] == "data_cleaning_index":
@@ -140,6 +148,7 @@ def main():
         result = sqlite.sql_sqlite_select(request)
 
 
+    # 其他辅助工具
     elif request["command"] == "find_subset_sheetnames_import":
         result = find_subset.find_subset_sheetnames_import(request)
     elif request["command"] == "find_subset_columns_index":
@@ -166,6 +175,15 @@ def main():
         result = bank_statement_sort.bank_statement_sort_debit_or_credit(request)
     elif request["command"] == "bank_statement_sort_export":
         result = bank_statement_sort.bank_statement_sort_export(request)
+
+    elif request["command"] == "generate_chronological_account_import":
+        result = generate_chronological_account.generate_chronological_account_import(request)
+    elif request["command"] == "generate_chronological_account_index":
+        result = generate_chronological_account.generate_chronological_account_index(request)
+    elif request["command"] == "generate_chronological_account_debit_or_credit":
+        result = generate_chronological_account.generate_chronological_account_debit_or_credit(request)
+    elif request["command"] == "generate_chronological_account_export":
+        result = generate_chronological_account.generate_chronological_account_export(request)
 
     else:
         result = "Unknown command"
